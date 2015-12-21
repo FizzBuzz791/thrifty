@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Linq;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Tagging;
@@ -33,20 +34,18 @@ namespace Thrifty.Classification
         {
             ITagAggregator<ThriftTokenTag> thriftTagAggregator =
                 AggregatorFactory.CreateTagAggregator<ThriftTokenTag>(buffer);
-            return new ThriftyClassifier(buffer, thriftTagAggregator, ClassificationTypeRegistry) as ITagger<T>;
+            return new ThriftyClassifier(thriftTagAggregator, ClassificationTypeRegistry) as ITagger<T>;
         }
     }
 
     internal sealed class ThriftyClassifier : ITagger<ClassificationTag>
     {
-        ITextBuffer _buffer;
-        ITagAggregator<ThriftTokenTag> _thriftTagAggregator;
-        IDictionary<ThriftTokenTypes, IClassificationType> _thriftTypes;
+        readonly ITagAggregator<ThriftTokenTag> _thriftTagAggregator;
+        readonly IDictionary<ThriftTokenTypes, IClassificationType> _thriftTypes;
 
-        internal ThriftyClassifier(ITextBuffer buffer, ITagAggregator<ThriftTokenTag> thriftTagAggregator,
+        internal ThriftyClassifier(ITagAggregator<ThriftTokenTag> thriftTagAggregator,
             IClassificationTypeRegistryService typeService)
         {
-            _buffer = buffer;
             _thriftTagAggregator = thriftTagAggregator;
             _thriftTypes = new Dictionary<ThriftTokenTypes, IClassificationType>();
             _thriftTypes[ThriftTokenTypes.ThriftUnion] = typeService.GetClassificationType(Constants.Keywords.Union);
@@ -62,13 +61,12 @@ namespace Thrifty.Classification
 
         public IEnumerable<ITagSpan<ClassificationTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
-            foreach (IMappingTagSpan<ThriftTokenTag> tagSpan in _thriftTagAggregator.GetTags(spans))
-            {
-                NormalizedSnapshotSpanCollection tagSpans = tagSpan.Span.GetSpans(spans[0].Snapshot);
-                yield return
-                    new TagSpan<ClassificationTag>(tagSpans[0],
-                                                   new ClassificationTag(_thriftTypes[tagSpan.Tag.Type]));
-            }
+            return
+                _thriftTagAggregator.GetTags(spans)
+                    .Select(
+                        tagSpan =>
+                            new TagSpan<ClassificationTag>(tagSpan.Span.GetSpans(spans[0].Snapshot)[0],
+                                new ClassificationTag(_thriftTypes[tagSpan.Tag.Type])));
         }
 
         public event EventHandler<SnapshotSpanEventArgs> TagsChanged

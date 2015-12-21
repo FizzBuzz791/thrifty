@@ -14,7 +14,7 @@ namespace Thrifty
     {
         public ITagger<T> CreateTagger<T>(ITextBuffer buffer) where T : ITag
         {
-            return new ThriftTokenTagger(buffer) as ITagger<T>;
+            return new ThriftTokenTagger() as ITagger<T>;
         }
     }
 
@@ -30,12 +30,10 @@ namespace Thrifty
 
     internal sealed class ThriftTokenTagger : ITagger<ThriftTokenTag>
     {
-        ITextBuffer _buffer;
-        IDictionary<string, ThriftTokenTypes> _thriftTypes;
+        readonly IDictionary<string, ThriftTokenTypes> _thriftTypes;
 
-        internal ThriftTokenTagger(ITextBuffer buffer)
+        internal ThriftTokenTagger()
         {
-            _buffer = buffer;
             _thriftTypes = new Dictionary<string, ThriftTokenTypes>();
             _thriftTypes[Constants.Keywords.Union] = ThriftTokenTypes.ThriftUnion;
             _thriftTypes[Constants.Keywords.Struct] = ThriftTokenTypes.ThriftStruct;
