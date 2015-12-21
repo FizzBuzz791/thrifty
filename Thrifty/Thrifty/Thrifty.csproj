@@ -57,7 +57,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classification\ThriftClassifier.cs" />
+    <Compile Include="Classification\ThriftyClassifier.cs" />
     <Compile Include="Classification\ThriftyFormat.cs" />
     <Compile Include="Classification\ThriftyType.cs" />
     <Compile Include="Constants.cs" />

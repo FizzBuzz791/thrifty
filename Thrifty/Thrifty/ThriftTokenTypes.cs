@@ -2,6 +2,11 @@
 {
     public enum ThriftTokenTypes
     {
-        ThriftUnion
+        ThriftUnion,
+        ThriftStruct,
+        ThriftNamespace,
+        ThriftInclude,
+        ThriftRequired,
+        ThriftOptional
     }
 }

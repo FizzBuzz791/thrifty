@@ -38,6 +38,11 @@ namespace Thrifty
             _buffer = buffer;
             _thriftTypes = new Dictionary<string, ThriftTokenTypes>();
             _thriftTypes[Constants.Keywords.Union] = ThriftTokenTypes.ThriftUnion;
+            _thriftTypes[Constants.Keywords.Struct] = ThriftTokenTypes.ThriftStruct;
+            _thriftTypes[Constants.Keywords.Namespace] = ThriftTokenTypes.ThriftNamespace;
+            _thriftTypes[Constants.Keywords.Include] = ThriftTokenTypes.ThriftInclude;
+            _thriftTypes[Constants.Keywords.Required] = ThriftTokenTypes.ThriftRequired;
+            _thriftTypes[Constants.Keywords.Optional] = ThriftTokenTypes.ThriftOptional;
         }
         
         public IEnumerable<ITagSpan<ThriftTokenTag>> GetTags(NormalizedSnapshotSpanCollection spans)
