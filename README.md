@@ -1,4 +1,15 @@
 # thrifty
-Experimentation into a thrift editor/syntax highlighter.
+This classifier extension highlights Thrift keywords in order to make development easier.
 
-Available via Visual Studio Gallery; https://visualstudiogallery.msdn.microsoft.com/f24785f5-814d-4b8f-be04-3a9ff19e4056
+It currently supports the following keywords;
+
+- union
+- struct
+- include
+- namespace
+- required
+- optional
+
+Future plans include adding in intellisense options and further keywords. Much of the credit goes to the Ook Implementation Sample created by Microsoft.
+
+It should be considered BETA and is released as-is. Feel free to contribute by creating a pull request. Any issues can also be raised via GitHub.
