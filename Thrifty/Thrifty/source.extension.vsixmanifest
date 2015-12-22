@@ -4,6 +4,7 @@
     <Identity Id="Thrifty..86ae1960-f817-452b-9ac8-4bfc493d7dc9" Version="1.0.1" Language="en-US" Publisher="Trent" />
     <DisplayName>Thrifty</DisplayName>
     <Description xml:space="preserve">This classifier highlights Thrift keywords in order to make development easier.</Description>
+    <MoreInfo>https://github.com/FizzBuzz791/thrifty</MoreInfo>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0,13.0)" />
