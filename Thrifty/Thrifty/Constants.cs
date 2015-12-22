@@ -3,6 +3,8 @@
     public class Constants
     {
         public const string ClassificationName = "Thrift";
+        public const string CompletionName = "ThriftCompletion";
+        public const string QuickInfoName = "ThriftQuickInfo";
 
         public class Keywords
         {
