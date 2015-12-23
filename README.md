@@ -9,7 +9,12 @@ It currently supports the following keywords;
 - namespace
 - required
 - optional
+- double
+- i64
+- i32
+- bool
+- string (code in place, commented out as it's causing exceptions/conflicts, need to investigate further).
 
-Future plans include adding in intellisense options and further keywords. Much of the credit goes to the Ook Implementation Sample created by Microsoft.
+Much of the credit goes to the Ook Implementation Sample created by Microsoft.
 
 It should be considered BETA and is released as-is. Feel free to contribute by creating a pull request. Any issues can also be raised via GitHub.
