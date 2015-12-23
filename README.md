@@ -13,7 +13,6 @@ It currently supports the following keywords;
 - i64
 - i32
 - bool
-- string (code in place, commented out as it's causing exceptions/conflicts, need to investigate further).
 
 Much of the credit goes to the Ook Implementation Sample created by Microsoft.
 
