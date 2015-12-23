@@ -34,13 +34,20 @@ namespace Thrifty
 
         internal ThriftTokenTagger()
         {
-            _thriftTypes = new Dictionary<string, ThriftTokenTypes>();
-            _thriftTypes[Constants.Keywords.Union] = ThriftTokenTypes.ThriftUnion;
-            _thriftTypes[Constants.Keywords.Struct] = ThriftTokenTypes.ThriftStruct;
-            _thriftTypes[Constants.Keywords.Namespace] = ThriftTokenTypes.ThriftNamespace;
-            _thriftTypes[Constants.Keywords.Include] = ThriftTokenTypes.ThriftInclude;
-            _thriftTypes[Constants.Keywords.Required] = ThriftTokenTypes.ThriftRequired;
-            _thriftTypes[Constants.Keywords.Optional] = ThriftTokenTypes.ThriftOptional;
+            _thriftTypes = new Dictionary<string, ThriftTokenTypes>
+            {
+                [Constants.Keywords.Union] = ThriftTokenTypes.ThriftUnion,
+                [Constants.Keywords.Struct] = ThriftTokenTypes.ThriftStruct,
+                [Constants.Keywords.Namespace] = ThriftTokenTypes.ThriftNamespace,
+                [Constants.Keywords.Include] = ThriftTokenTypes.ThriftInclude,
+                [Constants.Keywords.Required] = ThriftTokenTypes.ThriftRequired,
+                [Constants.Keywords.Optional] = ThriftTokenTypes.ThriftOptional,
+                [Constants.Keywords.Double] = ThriftTokenTypes.ThriftDouble,
+                //[Constants.Keywords.String] = ThriftTokenTypes.ThriftString,
+                [Constants.Keywords.Int64] = ThriftTokenTypes.ThriftInt64,
+                [Constants.Keywords.Int32] = ThriftTokenTypes.ThriftInt32,
+                [Constants.Keywords.Bool] = ThriftTokenTypes.ThriftBool
+            };
         }
         
         public IEnumerable<ITagSpan<ThriftTokenTag>> GetTags(NormalizedSnapshotSpanCollection spans)

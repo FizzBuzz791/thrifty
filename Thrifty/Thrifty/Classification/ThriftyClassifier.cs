@@ -16,7 +16,7 @@ namespace Thrifty.Classification
     {
         [Export]
         [Name(Constants.ClassificationName)]
-        [BaseDefinition("code")]
+        [BaseDefinition("text")]
         internal static ContentTypeDefinition ThriftContentType = null;
 
         [Export]
@@ -47,16 +47,20 @@ namespace Thrifty.Classification
             IClassificationTypeRegistryService typeService)
         {
             _thriftTagAggregator = thriftTagAggregator;
-            _thriftTypes = new Dictionary<ThriftTokenTypes, IClassificationType>();
-            _thriftTypes[ThriftTokenTypes.ThriftUnion] = typeService.GetClassificationType(Constants.Keywords.Union);
-            _thriftTypes[ThriftTokenTypes.ThriftStruct] = typeService.GetClassificationType(Constants.Keywords.Struct);
-            _thriftTypes[ThriftTokenTypes.ThriftNamespace] =
-                typeService.GetClassificationType(Constants.Keywords.Namespace);
-            _thriftTypes[ThriftTokenTypes.ThriftInclude] = typeService.GetClassificationType(Constants.Keywords.Include);
-            _thriftTypes[ThriftTokenTypes.ThriftRequired] =
-                typeService.GetClassificationType(Constants.Keywords.Required);
-            _thriftTypes[ThriftTokenTypes.ThriftOptional] =
-                typeService.GetClassificationType(Constants.Keywords.Optional);
+            _thriftTypes = new Dictionary<ThriftTokenTypes, IClassificationType>
+            {
+                [ThriftTokenTypes.ThriftUnion] = typeService.GetClassificationType(Constants.Keywords.Union),
+                [ThriftTokenTypes.ThriftStruct] = typeService.GetClassificationType(Constants.Keywords.Struct),
+                [ThriftTokenTypes.ThriftNamespace] = typeService.GetClassificationType(Constants.Keywords.Namespace),
+                [ThriftTokenTypes.ThriftInclude] = typeService.GetClassificationType(Constants.Keywords.Include),
+                [ThriftTokenTypes.ThriftRequired] = typeService.GetClassificationType(Constants.Keywords.Required),
+                [ThriftTokenTypes.ThriftOptional] = typeService.GetClassificationType(Constants.Keywords.Optional),
+                [ThriftTokenTypes.ThriftDouble] = typeService.GetClassificationType(Constants.Keywords.Double),
+                //[ThriftTokenTypes.ThriftString] = typeService.GetClassificationType(Constants.Keywords.String),
+                [ThriftTokenTypes.ThriftInt64] = typeService.GetClassificationType(Constants.Keywords.Int64),
+                [ThriftTokenTypes.ThriftInt32] = typeService.GetClassificationType(Constants.Keywords.Int32),
+                [ThriftTokenTypes.ThriftBool] = typeService.GetClassificationType(Constants.Keywords.Bool)
+            };
         }
 
         public IEnumerable<ITagSpan<ClassificationTag>> GetTags(NormalizedSnapshotSpanCollection spans)

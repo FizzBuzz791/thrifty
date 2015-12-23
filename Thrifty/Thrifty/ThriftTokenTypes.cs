@@ -7,6 +7,11 @@
         ThriftNamespace,
         ThriftInclude,
         ThriftRequired,
-        ThriftOptional
+        ThriftOptional,
+        ThriftDouble,
+        //ThriftString,
+        ThriftInt64,
+        ThriftInt32,
+        ThriftBool
     }
 }
