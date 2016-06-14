@@ -1,9 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Thrifty..86ae1960-f817-452b-9ac8-4bfc493d7dc9" Version="1.0.2" Language="en-US" Publisher="Trent" />
+    <Identity Id="Thrifty..86ae1960-f817-452b-9ac8-4bfc493d7dc9" Version="1.0.3" Language="en-US" Publisher="Trent" />
     <DisplayName>Thrifty</DisplayName>
-    <Description xml:space="preserve">This classifier highlights Thrift keywords in order to make development easier.</Description>
+    <Description xml:space="preserve">This classifier highlights Thrift keywords in order to make development easier.
+
+It currently supports the following keywords;
+
+- union
+- struct
+- include
+- namespace
+- required
+- optional
+- double
+- i64
+- i32
+- bool
+
+Future plans include adding in intellisense options and further keywords. Much of the credit goes to the Ook Implementation Sample created by Microsoft.
+
+It should be considered BETA and is released as-is. Feel free to contribute by creating a pull request. Any issues can also be raised via GitHub.</Description>
     <MoreInfo>https://github.com/FizzBuzz791/thrifty</MoreInfo>
   </Metadata>
   <Installation>

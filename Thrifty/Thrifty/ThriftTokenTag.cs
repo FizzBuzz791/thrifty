@@ -10,7 +10,7 @@ namespace Thrifty
     [Export(typeof(ITaggerProvider))]
     [ContentType(Constants.ClassificationName)]
     [TagType(typeof(ThriftTokenTag))]
-    internal sealed class ThriftTagProvider : ITaggerProvider
+    internal sealed class ThriftTokenTagProvider : ITaggerProvider
     {
         public ITagger<T> CreateTagger<T>(ITextBuffer buffer) where T : ITag
         {
